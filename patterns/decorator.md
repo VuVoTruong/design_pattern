@@ -6,6 +6,11 @@ We need to vary the responsibilities of an object, adding some features.
 ## Solution
 In the **Decorator** pattern we create an object that wraps the real one, and implements the same interface and forwarding method calls. However, before delegating to the real object, it performs the additional feature. Since all decorators implement the same core interface, we can build chains of decorators and assemble a combination of features at runtime. 
 
+## When To Use
+The **Decorator** pattern is helpful in the following situations:
+- When you want to make modifications to existing objects of a class rather than a class itself.
+- When you want each additional feature to be independent of others without following a fixed sequence to modify the object.
+
 ## Example
 Below is an implementation of an object that simply writes a text line to a file:
 

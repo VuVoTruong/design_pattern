@@ -6,6 +6,11 @@ We need to build a hierarchy of tree objects and want to interact with all them 
 ## Solution
 There are three main classes in the Composite pattern: the **component**, the **leaf** and the **composite** classes. The **component** is the base class and defines a common interface for all the components. The **leaf** is an indivisible building block of the process. The **composite** is a higher-level component built from subcomponents, so it fulfills a dual role: it is a component and a collection of components. As both composite and leaf classes implement the same interface, they can be used the same way.
 
+## When To Use
+- When application has hierarchical structure and needs generic functionality across the structure.
+- When application needs to aggregate data across a hierarchy.
+- When application wants to treat composite and individual objects uniformly.
+
 ## Example
 We've been asked to build a system that tracks the manufacturing of cakes, with a key requirement of being able to know how long it takes to bake it. Making a cake is a complicated process, as it involves multiple tasks that might be composed of different subtasks. The whole process could be represented in the following tree:
 

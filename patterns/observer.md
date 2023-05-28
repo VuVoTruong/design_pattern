@@ -6,6 +6,13 @@ We want to build a system that is highly integrated, that is, a system where eve
 ## Solution
 If we want some component (observer) to know about the activities of another one (subject), we could simply hard-wire both classes and inform the former upon some actions performed on the latter. This means that we should pass a reference to the observer when we create the subject, and call some of its methods when the latter changes. However, in this approach we are doing something we want to avoid— increasing coupling. What's more, if we wanted to inform some other observer, we'd have to modify the implementation of the subject so that it notifies the new observer even though nothing has changed. A much better approach is to keep a list of objects interested in the subject changes and define a clean interface between the source of the news (the subject) and the consumers (the observers). That way, whenever there's a change on the subject, we just need to iterate over the list of observers and notify them using the interface we defined.
 
+## When To Use
+The **Observer** pattern is beneficial in the following situations:
+- When you are making multiple view changes manually via code.
+- When the state of more than one object directly depends on the state of a specific object.
+- When there are multiple views whose state depends on the state of a particular object.
+
+
 ## Example
 Let's consider an `Employee` object that has a `salary` property. We'd like to be able to change their salary and keep the payroll system informed about any modifications. The simplest way to achieve this is passing a reference to payroll and inform it whenever we modify the employee `salary`:
 

@@ -6,6 +6,11 @@ We need to create a complex object that is hard to configure.
 ## Solution
 The **Builder** pattern encapsulates the construction logic of complex objects in its own class. It defines an interface to configure the object step by step, hiding the implementation details.
 
+## When To Use
+The **Builder** pattern is helpful in the following situations:
+- When you need many permutations of the existing features in a class while creating new objects.
+- When you are looking to define an assembly process for creating objects, rather than relying on constructors alone.
+
 ## Example
 Let's imagine that we have to build a system that keeps track of the components of a computer.
 

@@ -6,6 +6,10 @@ We want an object talk to some other object but their interfaces don't match.
 ## Solution
 We simply wrap the **adaptee** with our new **adapter** class. This class implements an interface that the invoker understands, although all the work is performed by the adapted object.
 
+## When To Use
+- When we are working with two incompatible systems or class or interface, the adapter pattern can be very powerful to use. It makes the code simpler, consistent, and easy to reason about.
+- Whenever we have several objects or methods doing something but have different implementations or different syntaxes, an adapter pattern can be definitely a good option
+
 ## Example
 Let's think of a class that takes two open files (a reader and a writer) and encrypts a file.
 

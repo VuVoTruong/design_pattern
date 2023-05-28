@@ -12,6 +12,12 @@ The iterator is a separate object from the aggregate, which is passed in as an a
 ### Internal Iterators
 With internal iterators we use a code block to pass the logic down into the aggregate. A really good example of this approach is the `Array` method `each`.
 
+## When To Use
+The **Iterator** pattern is most useful in the following situations:
+- When you are trying to break down an extensive process into smaller steps.
+- When you need the flexibility of making frequent changes to the substeps of an extensive process.
+- When you are looking to use external APIs in a small part of a more significant task
+
 ## Example
 An example of an external iterator for a Ruby array might look something like this:
 
