@@ -56,3 +56,59 @@ end
 pond = FrogPond.new(3)
 pond.simulate_one_day
 ```
+
+## Example 2
+```ruby
+# Product interface
+class Product
+  def operation
+    raise NotImplementedError, "Subclasses must implement the operation method."
+  end
+end
+
+# Concrete Products
+class ConcreteProductA < Product
+  def operation
+    puts "Operation of ConcreteProductA"
+  end
+end
+
+class ConcreteProductB < Product
+  def operation
+    puts "Operation of ConcreteProductB"
+  end
+end
+
+# Factory
+class Factory
+  def create_product(type)
+    case type
+    when :product_a
+      ConcreteProductA.new
+    when :product_b
+      ConcreteProductB.new
+    else
+      raise ArgumentError, "Invalid product type"
+    end
+  end
+end
+
+# Usage
+factory = Factory.new
+
+product_a = factory.create_product(:product_a)
+product_a.operation
+# Output: Operation of ConcreteProductA
+
+product_b = factory.create_product(:product_b)
+product_b.operation
+# Output: Operation of ConcreteProductB
+```
+In this example, we have a **Product** interface that defines the common behavior for all products. The **ConcreteProductA** and **ConcreteProductB** classes are the concrete implementations of the product interface.
+
+The **Factory** class is responsible for creating the products. It has a **create_product** method that takes a type parameter and returns the corresponding concrete product based on the type. In this case, it uses a case statement to determine which product to create.
+
+In the usage section, we create an instance of the factory. Then, we can use the factory to create different products by calling **create_product** method with the appropriate type. Finally, we can call the operation method on the created product, and it will execute the specific operation of that product.
+
+The Factory pattern allows for the creation of objects without exposing the instantiation logic to the client. It provides a single point of entry to create different products, and it can encapsulate the complexity of object creation.
+

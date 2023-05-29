@@ -115,11 +115,11 @@ create_gui(windows_factory) # Creates Windows GUI components
 create_gui(macos_factory)   # Creates MacOS GUI components
 ```
 
-In this example, we have an abstract factory *GUIFactory* with two abstract methods *create_button* and *create_window*.
-We then have two concrete factory classes *WindowsFactory* and *MacOSFactory* that implement these methods to create platform-specific buttons and windows.
+In this example, we have an abstract factory **GUIFactory** with two abstract methods **create_button** and **create_window**.
+We then have two concrete factory classes **WindowsFactory** and **MacOSFactory** that implement these methods to create platform-specific buttons and windows.
 
-The abstract products *Button* and *Window* define the common interface for different types of buttons and windows, while the concrete product classes *WindowsButton*, *MacOSButton*, *WindowsWindow*, and *MacOSWindow* provide the platform-specific implementations.
+The abstract products **Button** and **Window** define the common interface for different types of buttons and windows, while the concrete product classes **WindowsButton**, **MacOSButton**, **WindowsWindow**, and **MacOSWindow** provide the platform-specific implementations.
 
-The client code demonstrates how to use the abstract factory to create GUI components. By passing different concrete factory objects (*windows_factory* and *macos_factory*), we can create and render platform-specific buttons and windows.
+The client code demonstrates how to use the abstract factory to create GUI components. By passing different concrete factory objects (**windows_factory** and **macos_factory**), we can create and render platform-specific buttons and windows.
 
 This example illustrates how the Abstract Factory pattern enables the creation of families of related objects (buttons and windows) without tightly coupling the client code to specific platform implementations, promoting flexibility and modularity.

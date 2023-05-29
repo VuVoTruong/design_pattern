@@ -14,52 +14,57 @@ We simply wrap the **adaptee** with our new **adapter** class. This class implem
 Let's think of a class that takes two open files (a reader and a writer) and encrypts a file.
 
 ```ruby
-class Encrypter
-  def initialize(key)
-    @key = key
+c# Adaptee: Existing Component with incompatible interface
+class LegacyPrinter
+  def initialize(text)
+    @text = text
   end
 
-  def encrypt(reader, writer)
-    key_index = 0
-    while not reader.eof?
-      clear_char = reader.getc
-      encrypted_char = clear_char ^ @key[key_index]
-      writer.putc(encrypted_char)
-      key_index = (key_index + 1) % @key.size
-    end
+  def print_out
+    puts "Legacy Printer: #{@text}"
   end
 end
-```
 
-But what happens if the data we want to secure happens to be in a string, rather than in a file? We need an object that looks like an open file, that is, supports the same interface as the Ruby `IO` object. We can create an `StringIOAdapter` to achieve so:
-
-```ruby
-class StringIOAdapter
-  def initialize(string)
-    @string = string
-    @position = 0
+# Target: Desired interface
+class Printer
+  def initialize(text)
+    @text = text
   end
 
-  def getc
-    if @position >= @string.length
-      raise EOFError
-    end
-    ch = @string[@position]
-    @position += 1
-    return ch
-  end
-
-  def eof?
-    return @position >= @string.length
+  def print
+    raise NotImplementedError, "Subclasses must implement the print method."
   end
 end
-```
 
-Now we can use a `String` as if it were an open file (it only implements a small part of the `IO` interface, essentally what we need).
+# Adapter: Adapts the Adaptee to the Target interface
+class PrinterAdapter < Printer
+  def initialize(legacy_printer)
+    @legacy_printer = legacy_printer
+  end
 
-```ruby
-encrypter = Encrypter.new('XYZZY')
-reader= StringIOAdapter.new('We attack at dawn')
-writer=File.open('out.txt', 'w')
-encrypter.encrypt(reader, writer)
+  def print
+    @legacy_printer.print_out
+  end
+end
+
+# Usage
+text = "This is a text to be printed."
+
+legacy_printer = LegacyPrinter.new(text)
+legacy_printer.print_out
+# Output: Legacy Printer: This is a text to be printed.
+
+printer_adapter = PrinterAdapter.new(legacy_printer)
+printer_adapter.print
+# Output: Legacy Printer: This is a text to be printed.
 ```
+In this example, we have an existing component **LegacyPrinter** that has an incompatible interface. We want to use this legacy printer in our code, but we also have a **Printer** class that represents our desired interface.
+
+To make the **LegacyPrinter** compatible with the **Printer** interface, we create an **Adapter** class called **PrinterAdapter**. This adapter class inherits from the **Printer** class and wraps an instance of the **LegacyPrinter** class.
+
+The **PrinterAdapter** implements the print method of the **Printer** interface by delegating the call to the **print_out** method of the **LegacyPrinter**.
+
+In the usage section, we demonstrate both the direct use of the **LegacyPrinter** and the use of the **PrinterAdapter**. When using the **LegacyPrinter**, the output shows the legacy format. When using the **PrinterAdapter**, the output is the same, but it goes through the adapted interface.
+
+The **Adapter** pattern allows objects with incompatible interfaces to work together. It acts as a bridge between the client code and the legacy component, allowing the client to use the legacy code through a common interface.
+

@@ -67,9 +67,9 @@ computer.start
 ```
 In this example, we have a complex subsystem represented by different computer components: CPU, Memory, and HardDrive. Each component has specific functionalities defined.
 
-The ComputerFacade acts as a facade that simplifies the usage of the computer components. It initializes instances of CPU, Memory, and HardDrive and provides a start method that orchestrates the steps needed to start the computer.
+The **ComputerFacade** acts as a facade that simplifies the usage of the computer components. It initializes instances of CPU, Memory, and HardDrive and provides a start method that orchestrates the steps needed to start the computer.
 
-The client code creates an instance of the ComputerFacade and calls the start method on it. The facade internally manages the interactions between the components, such as freezing the CPU, loading data into memory, and reading from the hard drive.
+The client code creates an instance of the **ComputerFacade** and calls the start method on it. The facade internally manages the interactions between the components, such as freezing the CPU, loading data into memory, and reading from the hard drive.
 
 By using the facade, the client code does not need to deal with the complexities of the individual components. It provides a higher-level interface that abstracts away the details of the subsystem.
 
