@@ -36,6 +36,8 @@ class Plane < Vehicle
 end
 ```
 
+## Prefer composition over inheritance
+
 Not good
 ```ruby
 class Vehicle
@@ -132,7 +134,7 @@ class Car < Vehicle
     @engine.start
   end
   def stop_engine
-    @engine.start
+    @engine.stop
   end
 end
 ```

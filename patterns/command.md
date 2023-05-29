@@ -4,7 +4,9 @@
 We want to perform some specific task without knowing how the whole process works or having any information about the receiver of the request.
 
 ## Solution
-The Command pattern decouples the object that needs to perform a specific task from the one that knows how to do it. It encapsulates all the needed information to do the job into its own object including: who the receiver(s) is(are), the methods to invoke, and the parameters. That way, any object that wants to perform the task only needs to know about the command object interface.
+The Command pattern decouples the object that needs to perform a specific task from the one that knows how to do it.
+It encapsulates all the needed information to do the job into its own object including: who the receiver(s) is(are), the methods to invoke, and the parameters.
+That way, any object that wants to perform the task only needs to know about the command object interface.
 
 ## When To Use
 - When we a have series of transactional behavior and there can be a possibility where we want to move back to the previous state that time this pattern can be a massively powerful tool.

@@ -67,3 +67,36 @@ class SimpleLogger
   # Lots of code deleted...
 end
 ```
+
+## Example 2
+```ruby
+class SingletonClass
+  @@instance = SingletonClass.new
+
+  private_class_method :new
+
+  def self.instance
+    @@instance
+  end
+
+  def say_hello
+    puts "Hello, I am a Singleton!"
+  end
+end
+
+# Usage
+singleton = SingletonClass.instance
+singleton.say_hello
+
+# Trying to create a new instance will result in an error
+# new_instance = SingletonClass.new
+#=> private method `new' called for SingletonClass:Class (NoMethodError)
+```
+In this example, the *SingletonClass* is designed as a singleton. The class has a private class method *new* to prevent direct instantiation of objects. Instead, it provides a class method *instance* that returns the single instance of the class.
+
+When using the *SingletonClass*, you can obtain the instance by calling *SingletonClass.instance*. Once you have the instance, you can call its methods as usual.
+
+Trying to create a new instance using *SingletonClass.new* will result in an error because the new method is private.
+
+The Singleton pattern ensures that only one instance of the class is created and provides a global point of access to that instance. It is commonly used when you need to have a single instance shared across multiple parts of your codebase.
+
